@@ -1,4 +1,4 @@
-.286
+.model small
 ;Macro que ejecuta un pitido con una frecuencia dada
 pitido MACRO freq, time
     LOCAL espera
@@ -34,7 +34,6 @@ pitido MACRO freq, time
     POP CX
     POP DX
 ENDM
-
 ; Espera 'segundos' segundos usando el reloj del BIOS
 wait_seconds MACRO segundos
     LOCAL wait_loop
@@ -65,12 +64,9 @@ wait_loop:
     POP AX
 ENDM
 
-seg_pila SEGMENT STACK
-    DB 32 DUP('Stack...')
-seg_pila ENDS
+.stack
 
-seg_datos SEGMENT 
-
+.data
     sii dw 2415       ;nada si oktaf 1  (7)
     la  dw 2711       ;nada la oktaf 1  (6)
     sol dw 3043       ;nada sol oktaf 1 (5)
@@ -78,48 +74,13 @@ seg_datos SEGMENT
     mi  dw 3619       ;nada mi oktaf 1 (3)
     re  dw 4061       ;2
     do  dw 4560       ;1 
-    
-    F_low dw 6833
-    Fsh_low dw 6449
-    Gsh_low dw 5746
-    Ash_low dw 5119
-    
-    C_K DW 4560
-    Csh dw 4304
-    D dw 4063
-    Dsh dw 3834
-    E dw 3619
-    F dw 3416
-    Fsh dw 3224
-    G dw 3043
-    Gsh dw 2873
 
-
-
-    height_let DB 0
-    width_let DB 0
-    coord_x DB 0
-    coord_y DB 0
-    coord_x_offset DB 0
-
-    result DB 0
-seg_datos ENDS
-
-
-
-seg_codigo SEGMENT 'CODE'
-    Assume SS:seg_pila, DS:seg_datos, CS:seg_codigo
-
+.code
     MAIN Proc Far
-        
-        push   DS
-        push   0
-        MOV    AX, seg_datos
+        MOV    AX, @data
         MOV    DS, AX
-        MOV    ES, AX    
         
         inicio:
-        ;1193180
         
         pitido sol, 1
         pitido la, 1
@@ -127,7 +88,7 @@ seg_codigo SEGMENT 'CODE'
 
         pitido sol, 1
 
-        pitido G, 1
+        pitido sol, 1
         pitido la, 1
         pitido sii, 1
         pitido sol, 1
@@ -137,10 +98,8 @@ seg_codigo SEGMENT 'CODE'
         pitido re, 1
         JMP inicio
         fin:
-    RET
+        .exit
 MAIN ENDP
 
-seg_codigo ENDS
 
 END MAIN
-

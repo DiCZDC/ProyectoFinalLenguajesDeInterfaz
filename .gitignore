@@ -1,0 +1,29 @@
+# Ignora la carpeta de configuración de Visual Studio
+.vs/
+
+# Ignora archivos temporales y de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignora binarios y objetos compilados
+bin/
+obj/
+
+# Ignora resultados de pruebas
+TestResults/
+
+# Ignora paquetes descargados
+packages/
+
+# Ignora archivos de log y temporales
+*.log
+*.tmp
+
+# Ignora archivos de configuración local de Rider o ReSharper
+.idea/
+*.DotSettings.user
+
+# Ignora archivos de índice de contenido de Visual Studio
+*.vsidx

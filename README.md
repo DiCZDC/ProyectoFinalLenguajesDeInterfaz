@@ -42,7 +42,7 @@ Sigue estos pasos para configurar el entorno de desarrollo:
 -   **Puerto Serial:** El servidor está configurado por defecto para escuchar en el puerto `COM5`.
 -   **Baudios:** La velocidad de comunicación está configurada a `9600` baudios.
 
-Si necesitas modificar esta configuración (por ejemplo, usar un puerto COM diferente o ajustar la velocidad de baudios), deberás localizar el archivo del servidor Node.js que maneja la conexión serial (comúnmente podría llamarse `server.js`, `serial_handler.js`, `index.js` dentro del directorio del servidor, etc.) y ajustar los parámetros correspondientes.
+Si necesitas modificar esta configuración (por ejemplo, usar un puerto COM diferente o ajustar la velocidad de baudios), deberás localizar el archivo del `server.js` y ajustar los parámetros correspondientes.
 
 Por ejemplo, si se utiliza la librería `serialport` (una librería común para estas tareas en Node.js), la configuración podría verse así en tu código JavaScript:
 ```javascript
